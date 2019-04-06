@@ -1,13 +1,11 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.3
 
 GraphForm {
-    Spinner {
-        id: rowSpinner
-        label: "Часы"
-        onValueChanged: {
-            console.log(value)
-//            resultText.text = "Loading...";
-//            myWorker.sendMessage( { row: rowSpinner.value, column: columnSpinner.value } );
-        }
+    Label {
+        anchors.fill: parent
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        text: "GraphForm"
     }
 }

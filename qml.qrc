@@ -10,7 +10,5 @@
         <file>InfoStat.qml</file>
         <file>InfoStatForm.ui.qml</file>
         <file>SwipeView.qml</file>
-        <file>Spinner.qml</file>
-        <file>SetDigitalClock.qml</file>
     </qresource>
 </RCC>

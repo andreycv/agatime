@@ -1,11 +1,9 @@
 #include "api.h"
 #include "sqliteapi.h"
 
-#include <QDebug>
-#include <QThread>
-
 Api::Api(QObject *parent) : QObject(parent)
 {
+  //По-умолчанию сегодня
   day();
 }
 
@@ -30,14 +28,6 @@ bool Api::day(QString date)
     return false;
   }
 
-//  qDebug() << "######>>" << date << FORMAT_DATE;
-//  qDebug() << "###>>" <<
-//              act.data.toString(FORMAT_DATE) <<
-//              act.start.toString(FORMAT_TIME) <<
-//              act.finish.toString(FORMAT_TIME) <<
-//              act.startDinner.toString(FORMAT_TIME) <<
-//              act.finishDinner.toString(FORMAT_TIME) <<
-//              act.comment;
   m_start = act.start;
   m_finish = act.finish;
   m_startDinner = act.startDinner;
@@ -49,7 +39,6 @@ bool Api::day(QString date)
 
 QString Api::getStart() const
 {
-//  qDebug() << Q_FUNC_INFO;
   return m_start.toString(FORMAT_TIME);
 }
 
@@ -76,19 +65,6 @@ QString Api::getDate() const
 QString Api::getMessage() const
 {
   return m_message;
-}
-
-QVariantList Api::getList()
-{
-  return {"a", "b", "c"};
-}
-
-void Api::emitList()
-{
-  emit addData("a,b,c,d");
-  emit addData("dfghjhfhjg");
-  emit addData("dfjghkgfhkgj");
-  emit addData("dfjghjghjfgjfghj");
 }
 
 bool Api::setStart()
@@ -153,7 +129,7 @@ bool Api::setMessage(const QString& message) const
   return api.update(act);
 }
 
-bool Api::del(QString &date)
+bool Api::del(QString date)
 {
   QDate data(QDate::fromString(date, FORMAT_DATE));
   if(!data.isValid())
@@ -164,7 +140,6 @@ bool Api::del(QString &date)
 
 bool Api::update(QString date, QString str, int num)
 {
-  qDebug() << date << str << (int)num;
   return true;
   Action act;
   act.data = QDate::fromString(date, FORMAT_DATE);

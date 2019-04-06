@@ -1,7 +1,5 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-//import QtQuick.Window 2.0
-//import QtQuick.Layouts 1.1
 
 ApplicationWindow {
     id: window
@@ -10,15 +8,11 @@ ApplicationWindow {
     height: 480
     title: qsTr("AgaTime")
 
-    // Пересчёт независимых от плотности пикселей в физические пиксели устройства
-//    readonly property int dpi: Screen.pixelDensity * 25.4
-//    function dp(x){ return (dpi < 120) ? x : x*(dpi/160); }
-
-//     Loader для смены Фрагментов
+    // Loader для смены Фрагментов
     Loader {
         id: loader
         anchors.fill: parent
-        source: "InfoStat.qml"
+        source: "SwipeView.qml"
 
         // Функция для смены содержимого Loader
         function loadFragment(index){
@@ -51,19 +45,19 @@ ApplicationWindow {
                     anchors.fill: parent
 
                     delegate: Item {
-                        height: 48//dp(48)
+                        height: 48
                         anchors.left: parent.left
                         anchors.right: parent.right
 
                         Rectangle {
                             anchors.fill: parent
-                            anchors.margins: 5//dp(5)
+                            anchors.margins: 5
                             color: "gray"
 
                             Text {
                                 text: fragment
                                 anchors.fill: parent
-                                font.pixelSize: 20//dp(20)
+                                font.pixelSize: 20
 
                                 renderType: Text.NativeRendering
                                 horizontalAlignment: Text.AlignHCenter

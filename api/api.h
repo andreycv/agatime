@@ -2,15 +2,20 @@
 #define API_H
 
 #include <QObject>
-#include <QVariant>
-
 #include <QDate>
 
+/*!
+ * \brief Адаптированное API над SQLiteApi(SQLite) для вызовов в QML
+ * \details В конструкторе вызывается Api::day() с парам. по-умолчанию
+ */
 class Api : public QObject
 {
   Q_OBJECT
 public:
 
+  /*!
+  * \brief Тип события
+  */
   enum Enum {
     Date = 0,
     Start,
@@ -31,6 +36,7 @@ public slots:
    * \param date интересующая дата, по умолчанию "сегодня"
    */
   bool day(QString date = QString());
+  ///< Вернуть строку, начало дня
   QString getStart() const;
   QString getFinish() const;
   QString getStartDinner() const;
@@ -38,16 +44,13 @@ public slots:
   QString getDate() const;
   QString getMessage() const;
 
-  QVariantList getList();
-  void emitList();
-
   bool setStart();
   bool setFinish();
   bool setStartDinner();
   bool setFinishDinner();
   bool setMessage(const QString& message) const;
 
-  bool del(QString& date);
+  bool del(QString date);
 
   bool update(QString date, QString str, int num);
 

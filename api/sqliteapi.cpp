@@ -1,13 +1,11 @@
 #include "sqliteapi.h"
 
 #include <QFile>
-#include <QDebug>
+#include <QVariant>
 
-SQLiteApi::SQLiteApi(QObject *parent)
-  : QObject(parent)
-   ,m_lastError(Error::NoError)
+SQLiteApi::SQLiteApi()
+   : m_lastError(Error::NoError)
 {
-//  qDebug() << Q_FUNC_INFO;
   if(QFile(DB_PATH).exists())
   {
     openDB();
@@ -50,7 +48,11 @@ bool SQLiteApi::del(const QDate &date)
 Action SQLiteApi::get(const QDate &date)
 {
   QSqlQuery query;
-  QString q = QString("SELECT DATA, START, FINISH, StartDinner, FinishDinner, Comment FROM AgaTime WHERE DATA= '%1'").arg(date.toString(FORMAT_DATE));
+  QString q =
+          QString("SELECT DATA, START, FINISH, "
+                  "StartDinner, FinishDinner, Comment "
+                  "FROM AgaTime WHERE DATA= '%1'")
+          .arg(date.toString(FORMAT_DATE));
   if(!query.exec(q))
   {
     m_lastError = Error::Get;
@@ -116,7 +118,6 @@ Error SQLiteApi::lastError() const
 
 bool SQLiteApi::openDB()
 {
-//  qDebug() << Q_FUNC_INFO;
   m_db = QSqlDatabase::addDatabase("QSQLITE");
   m_db.setHostName("db.sql");
   m_db.setDatabaseName(DB_PATH);
@@ -125,7 +126,6 @@ bool SQLiteApi::openDB()
 
 bool SQLiteApi::createTables()
 {
-//  qDebug() << Q_FUNC_INFO;
   QSqlQuery query;
   return
       query.exec("CREATE TABLE AgaTime"

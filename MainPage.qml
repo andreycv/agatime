@@ -5,7 +5,6 @@ import QtQuick.Layouts 1.3
 import QtQml 2.0
 
 MainPageForm {
-    //property alias buttonBox1: buttonBox1
     property var varList: []
     property bool commentWasChanged: false
     GridLayout {

@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>MainPage.qml</file>
+        <file>MainPageForm.ui.qml</file>
+        <file>Graph.qml</file>
+        <file>GraphForm.ui.qml</file>
+        <file>InfoStat.qml</file>
+        <file>InfoStatForm.ui.qml</file>
+        <file>SwipeView.qml</file>
+        <file>Spinner.qml</file>
+        <file>SetDigitalClock.qml</file>
+    </qresource>
+</RCC>
